@@ -2,19 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/server/server.js",
-      "use": "@vercel/node"
-    },
-    {
       "src": "src/public/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "src/server/server.js"
-    },
     {
       "src": "/trend",
       "dest": "src/public/trend.html"
@@ -26,10 +18,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "src/server/server.js": {
-      "maxDuration": 10
-    }
   }
 }

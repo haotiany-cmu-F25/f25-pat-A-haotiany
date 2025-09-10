@@ -1,5 +1,5 @@
 // Activity Monitor JavaScript
-const socket = io();
+// Note: Socket.io disabled for serverless deployment compatibility
 
 // DOM elements
 const currentDateElement = document.getElementById('current-date');
@@ -17,12 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCurrentDate();
     loadActivities();
     setupEventListeners();
-});
-
-// Socket.io event listeners
-socket.on('activityAdded', function(activity) {
-    console.log('New activity received:', activity);
-    loadActivities(); // Reload activities to show the new one
+    
+    // Auto-refresh every 30 seconds for new activities
+    setInterval(loadActivities, 30000);
 });
 
 function updateCurrentDate() {

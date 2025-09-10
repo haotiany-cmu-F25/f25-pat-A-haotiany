@@ -1,5 +1,5 @@
 // Activity Trend Chart JavaScript
-const socket = io();
+// Note: Socket.io disabled for serverless deployment compatibility
 
 let chart;
 
@@ -7,12 +7,9 @@ let chart;
 document.addEventListener('DOMContentLoaded', function() {
     initializeChart();
     loadTrendData();
-});
-
-// Socket.io event listeners for real-time updates
-socket.on('activityAdded', function(activity) {
-    console.log('New activity received, updating chart:', activity);
-    loadTrendData();
+    
+    // Auto-refresh every 60 seconds for new data
+    setInterval(loadTrendData, 60000);
 });
 
 function initializeChart() {
