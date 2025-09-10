@@ -2,17 +2,21 @@
 
 A web application for tracking personal fitness activities built with Node.js, Express.js, and vanilla JavaScript.
 
+🌐 **[LIVE DEMO - Deploy your own!](DEPLOY.md)**
+
 ## Features
 - Track activities (Walking, Running, Pickleball, Swimming, Hiking)
 - Activity monitoring with date filtering
 - 7-day activity trend visualization
 - Real-time updates via Socket.io
+- **Globally accessible** - Deploy to make it public!
 
 ## Technology Stack
 - **Backend**: Node.js, Express.js, Socket.io
-- **Database**: SQLite (lightweight, local development)
+- **Database**: SQLite (local) / MongoDB Atlas (production)
 - **Frontend**: HTML, CSS, JavaScript (no frameworks)
 - **Charts**: Chart.js for activity trends
+- **Deployment**: Vercel (serverless)
 
 ## Getting Started
 

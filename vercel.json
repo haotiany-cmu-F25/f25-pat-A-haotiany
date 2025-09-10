@@ -23,5 +23,13 @@
       "src": "/(.*)",
       "dest": "src/public/$1"
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "src/server/server.js": {
+      "maxDuration": 10
+    }
+  }
 }

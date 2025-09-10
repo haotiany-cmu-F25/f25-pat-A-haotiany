@@ -3,13 +3,22 @@ const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
 const cors = require('cors');
-const db = require('../database/database');
+require('dotenv').config();
+
+// Use universal database that supports both SQLite and MongoDB
+const db = require('../database/database-universal');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
 
 const PORT = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
 
 // Middleware
 app.use(cors());
@@ -72,10 +81,27 @@ io.on('connection', (socket) => {
 
 // Initialize database and start server
 db.initialize(() => {
-    server.listen(PORT, '0.0.0.0', () => {
-        console.log(`Personal Activity Tracker server running on port ${PORT}`);
-        console.log(`Activity Monitor: http://localhost:${PORT}`);
-        console.log(`Activity Trend: http://localhost:${PORT}/trend`);
-        console.log(`Public Access: The server is accessible from external networks`);
-    });
+    if (!isProduction) {
+        // Only start server locally, Vercel handles this in production
+        server.listen(PORT, '0.0.0.0', () => {
+            console.log(`Personal Activity Tracker server running on port ${PORT}`);
+            console.log(`Activity Monitor: http://localhost:${PORT}`);
+            console.log(`Activity Trend: http://localhost:${PORT}/trend`);
+            console.log(`Public Access: The server is accessible from external networks`);
+        });
+    }
 });
+
+// For Vercel deployment
+if (isProduction) {
+    module.exports = app;
+} else {
+    // Graceful shutdown
+    process.on('SIGTERM', async () => {
+        console.log('SIGTERM received, shutting down gracefully');
+        await db.closeConnection();
+        server.close(() => {
+            console.log('Process terminated');
+        });
+    });
+}
