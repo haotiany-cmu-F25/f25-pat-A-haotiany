@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Trend - Personal Activity Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Activity Trend</h1>
+            <nav>
+                <a href="/" class="nav-link">Monitor</a>
+                <a href="/trend" class="nav-link active">Activity Trend</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="trend-header">
+                <h2 id="trend-title">Weekly Trend for Sep 1, 2025 - Sep 7, 2025</h2>
+                <p class="trend-subtitle">Total Calories</p>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="activityChart"></canvas>
+            </div>
+
+            <div class="trend-footer">
+                <a href="/" class="btn btn-primary">Monitor</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/chart.js"></script>
+</body>
+</html>

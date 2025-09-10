@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    min-height: 100vh;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.date-header h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.date-filter {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.date-filter label {
+    font-weight: 500;
+    color: #555;
+}
+
+.date-filter input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.activities-container {
+    margin-top: 20px;
+}
+
+.activities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.activity-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.activity-date {
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.activity-entry {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.activity-entry:last-child {
+    margin-bottom: 0;
+}
+
+.activity-icon {
+    font-size: 2rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.activity-details {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.activity-info {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.activity-stat {
+    font-weight: 500;
+    color: #555;
+}
+
+.activity-heart-rate {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Chart container styles */
+.chart-container {
+    position: relative;
+    height: 400px;
+    margin: 30px 0;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.trend-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.trend-header h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.trend-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.trend-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Activity type icons */
+.activity-icon.running::before { content: "🏃"; }
+.activity-icon.walking::before { content: "🚶"; }
+.activity-icon.swimming::before { content: "🏊"; }
+.activity-icon.hiking::before { content: "🥾"; }
+.activity-icon.pickleball::before { content: "🏓"; }
+
+/* Loading state */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .date-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .activity-details {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .activity-info {
+        justify-content: space-between;
+    }
+    
+    .chart-container {
+        height: 300px;
+        padding: 15px;
+    }
+}

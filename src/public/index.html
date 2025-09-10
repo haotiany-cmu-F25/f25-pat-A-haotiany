@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Monitor - Personal Activity Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Activity Monitor</h1>
+            <nav>
+                <a href="/" class="nav-link active">Monitor</a>
+                <a href="/trend" class="nav-link">Activity Trend</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="date-header">
+                <h2 id="current-date">My Activities - Loading...</h2>
+            </div>
+
+            <div class="filter-section">
+                <div class="date-filter">
+                    <label for="from-date">From:</label>
+                    <input type="date" id="from-date" name="from-date">
+                    
+                    <label for="to-date">To:</label>
+                    <input type="date" id="to-date" name="to-date">
+                    
+                    <button id="filter-btn" class="btn btn-primary">Filter</button>
+                    <button id="clear-btn" class="btn btn-secondary">Clear</button>
+                </div>
+            </div>
+
+            <div class="activities-container">
+                <div id="activities-list" class="activities-list">
+                    <!-- Activities will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
